@@ -7,6 +7,11 @@
     --eci-blue: #1A73E8;
     --eci-blue-dark: #1557b0;
     --eci-blue-light: #4a9af5;
+    --connector-color: #E2E8F4;
+  }
+
+  .dark {
+    --connector-color: #2A3148;
   }
 
   html {

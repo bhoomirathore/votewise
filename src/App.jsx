@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import ElectionTimeline from './components/ElectionTimeline'
 import FloatingButton from './components/FloatingButton'
 import Footer from './components/Footer'
 
@@ -38,6 +39,7 @@ function App() {
       />
       <main className="flex-1">
         <Hero language={language} />
+        <ElectionTimeline />
       </main>
       <Footer />
       <FloatingButton />
