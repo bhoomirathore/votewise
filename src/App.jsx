@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ElectionTimeline from './components/ElectionTimeline'
 import VoterGuide from './components/VoterGuide'
+import Glossary from './components/Glossary'
 import FloatingButton from './components/FloatingButton'
 import Footer from './components/Footer'
 import GeminiChat from './components/GeminiChat'
@@ -44,6 +45,7 @@ function App() {
         <Hero language={language} />
         <ElectionTimeline />
         <VoterGuide />
+        <Glossary />
       </main>
       <Footer />
       <div onClick={() => setIsChatOpen(!isChatOpen)}>
