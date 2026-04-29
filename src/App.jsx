@@ -5,6 +5,7 @@ import ElectionTimeline from './components/ElectionTimeline'
 import VoterGuide from './components/VoterGuide'
 import FloatingButton from './components/FloatingButton'
 import Footer from './components/Footer'
+import GeminiChat from './components/GeminiChat'
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -18,6 +19,7 @@ function App() {
   })
 
   const [language, setLanguage] = useState('English')
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
   useEffect(() => {
     const root = document.documentElement
@@ -44,7 +46,10 @@ function App() {
         <VoterGuide />
       </main>
       <Footer />
-      <FloatingButton />
+      <div onClick={() => setIsChatOpen(!isChatOpen)}>
+        <FloatingButton />
+      </div>
+      <GeminiChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   )
 }
