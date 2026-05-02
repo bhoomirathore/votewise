@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import ElectionTimeline from './components/ElectionTimeline'
 import VoterGuide from './components/VoterGuide'
 import Glossary from './components/Glossary'
+import Quiz from './components/Quiz'
 import FloatingButton from './components/FloatingButton'
 import Footer from './components/Footer'
 import GeminiChat from './components/GeminiChat'
@@ -46,6 +47,7 @@ function App() {
         <ElectionTimeline />
         <VoterGuide />
         <Glossary />
+        <Quiz />
       </main>
       <Footer />
       <div onClick={() => setIsChatOpen(!isChatOpen)}>
