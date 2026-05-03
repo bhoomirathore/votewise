@@ -9,7 +9,7 @@ export default function FloatingButton() {
       title="Ask VoteWise"
     >
       {/* Pulsing background ring */}
-      <span className="absolute inset-0 rounded-full bg-eci-blue animate-ping opacity-20 pointer-events-none" />
+      <span className="absolute inset-0 rounded-full bg-saffron animate-ping opacity-20 pointer-events-none" />
 
       <MessageCircle
         className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform duration-200"

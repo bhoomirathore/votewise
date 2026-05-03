@@ -110,8 +110,8 @@ function ProgressBar({ completed, total }) {
           style={{
             width: `${pct}%`,
             background: allDone
-              ? 'linear-gradient(90deg,#16a34a,#22c55e)'
-              : 'linear-gradient(90deg,#1A73E8,#4a9af5)',
+              ? 'linear-gradient(90deg,#138808,#22c55e)'
+              : 'linear-gradient(90deg,#FF9933,#E6872A)',
           }}
           role="progressbar"
           aria-valuenow={completed}
@@ -300,18 +300,19 @@ function StepCard({ step, checked, onToggle, index, total }) {
           <ExternalLink className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
         </a>
 
-        {/* Google Maps embed (Step 3 only) */}
+        {/* Polling booth link card (replaces Google Maps iframe) */}
         {step.hasMap && (
-          <iframe
-            src="https://maps.google.com/maps?q=polling+booth+Bhopal+India&output=embed"
-            width="100%"
-            height="300"
-            style={{ borderRadius: '8px', border: 'none', marginTop: '12px' }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Polling booth locator"
-          />
+          <div className="mt-4 p-4 bg-saffron-light border border-saffron rounded-lg">
+            <p className="text-sm text-gray-600 mb-2">Find your assigned polling booth using your EPIC number</p>
+            <a
+              href="https://voters.eci.gov.in/find-polling-station"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-saffron text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-saffron-dark transition-colors"
+            >
+              Find Your Polling Booth →
+            </a>
+          </div>
         )}
 
         {/* "I've completed this step" checkbox row */}
@@ -474,7 +475,8 @@ export default function VoterGuide() {
     <section
       id="voter-guide"
       aria-labelledby="voter-guide-heading"
-      className="relative px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-gray-50/60 dark:bg-gray-900/40 overflow-hidden"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 lg:py-24 overflow-hidden"
+      style={{ background: '#FFFFFF' }}
     >
       {/* Decorative blobs */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-green-400/5 dark:bg-green-500/3 rounded-full blur-3xl pointer-events-none" />
@@ -484,11 +486,10 @@ export default function VoterGuide() {
 
         {/* ── Section header ── */}
         <div className="text-center mb-10 md:mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-eci-blue/10 dark:bg-eci-blue/15 border border-eci-blue/20 dark:border-eci-blue/30 mb-5">
-            <TrendingUp className="w-3.5 h-3.5 text-eci-blue dark:text-eci-blue-light" />
-            <span className="text-xs sm:text-sm font-semibold text-eci-blue dark:text-eci-blue-light tracking-wide uppercase">
-              Module 2
-            </span>
+          <div className="module-badge">
+            <span className="module-badge-line" />
+            <span className="module-badge-text">Module 2</span>
+            <span className="module-badge-line" />
           </div>
 
           <h2

@@ -230,19 +230,20 @@ const Quiz = () => {
   const renderLevelSelection = () => (
     <div className="grid md:grid-cols-3 gap-6 mt-8">
       {[
-        { name: 'Beginner', questions: 3, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', desc: 'Start with the basics' },
-        { name: 'Intermediate', questions: 4, color: 'text-amber-600 dark:text-amber-500', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', desc: 'Test your working knowledge' },
-        { name: 'Advanced', questions: 3, color: 'text-red-600 dark:text-red-500', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', desc: 'For the true election geeks' }
+        { name: 'Beginner',     questions: 3, color: 'text-india-green', bg: 'bg-white dark:bg-card-dark', border: 'border-india-green/30 dark:border-india-green/40', topColor: '#138808', desc: 'Start with the basics' },
+        { name: 'Intermediate', questions: 4, color: 'text-saffron',      bg: 'bg-white dark:bg-card-dark', border: 'border-saffron/30 dark:border-saffron/40',           topColor: '#FF9933', desc: 'Test your working knowledge' },
+        { name: 'Advanced',     questions: 3, color: 'text-red-600',      bg: 'bg-white dark:bg-card-dark', border: 'border-red-200 dark:border-red-800',                 topColor: '#DC2626', desc: 'For the true election geeks' }
       ].map((lvl) => (
         <button
           key={lvl.name}
           onClick={() => handleStart(lvl.name)}
-          className={`flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all hover:-translate-y-1 hover:shadow-lg ${lvl.bg} ${lvl.border} group focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-${lvl.name === 'Beginner' ? 'green' : lvl.name === 'Intermediate' ? 'amber' : 'red'}-500 dark:focus:ring-offset-gray-900`}
+          style={{ borderTopColor: lvl.topColor, borderTopWidth: '3px' }}
+          className={`flex flex-col items-center justify-center p-8 rounded-2xl border-2 transition-all hover:-translate-y-1 hover:shadow-lg ${lvl.bg} ${lvl.border} group focus:outline-none focus:ring-4 focus:ring-offset-2`}
           aria-label={`Start ${lvl.name} quiz with ${lvl.questions} questions`}
         >
           <div className={`text-2xl font-bold mb-2 ${lvl.color}`}>{lvl.name}</div>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">{lvl.desc}</p>
-          <div className="text-sm font-medium px-4 py-1.5 rounded-full bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300">
+          <p className="text-text-secondary dark:text-text-secondary-dark mb-4">{lvl.desc}</p>
+          <div className="text-sm font-medium px-4 py-1.5 rounded-full bg-saffron-light shadow-sm text-saffron">
             {lvl.questions} Questions
           </div>
         </button>
@@ -256,12 +257,12 @@ const Quiz = () => {
     const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
     return (
-      <div className="max-w-3xl mx-auto mt-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-all">
+      <div className="max-w-3xl mx-auto mt-8 bg-white dark:bg-card-dark rounded-2xl shadow-xl overflow-hidden transition-all">
         {/* Progress Bar */}
         <div className="h-2 bg-gray-100 dark:bg-gray-700 w-full">
           <div 
-            className="h-full bg-[#1A73E8] transition-all duration-500 ease-out" 
-            style={{ width: `${progress}%` }}
+            className="h-full transition-all duration-500 ease-out" 
+            style={{ width: `${progress}%`, background: 'linear-gradient(90deg, #FF9933, #E6872A)' }}
             role="progressbar"
             aria-valuenow={progress}
             aria-valuemin="0"
@@ -271,7 +272,7 @@ const Quiz = () => {
         
         <div className="p-6 md:p-8">
           <div className="flex justify-between items-center mb-6">
-            <span className="text-sm font-bold text-[#1A73E8] tracking-wider uppercase">
+            <span className="text-sm font-bold text-saffron tracking-wider uppercase">
               Question {currentQuestionIndex + 1} of {questions.length}
             </span>
             <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
@@ -305,7 +306,7 @@ const Quiz = () => {
                   key={index}
                   onClick={() => handleOptionClick(index)}
                   disabled={isAnswered}
-                  className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center justify-between font-medium ${buttonStyles} focus:outline-none focus:ring-4 focus:ring-[#1A73E8]/30 dark:focus:ring-[#1A73E8]/50`}
+                  className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center justify-between font-medium ${buttonStyles} focus:outline-none focus:ring-4 focus:ring-saffron/30 dark:focus:ring-saffron/50`}
                   aria-label={`Option ${index + 1}: ${option}`}
                 >
                   <span>{option}</span>
@@ -317,8 +318,8 @@ const Quiz = () => {
           </div>
           
           {isAnswered && (
-            <div className="mt-8 p-5 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-xl animate-fade-in">
-              <h4 className="font-bold text-[#1A73E8] dark:text-blue-400 mb-2 flex items-center gap-2">
+            <div className="mt-8 p-5 bg-saffron-light dark:bg-saffron/10 border border-saffron/20 dark:border-saffron/30 rounded-xl animate-fade-in">
+              <h4 className="font-bold text-saffron dark:text-saffron mb-2 flex items-center gap-2">
                 Explanation
               </h4>
               <p className="text-gray-700 dark:text-gray-300">
@@ -331,7 +332,7 @@ const Quiz = () => {
             <div className="mt-8 flex justify-end">
               <button
                 onClick={handleNextQuestion}
-                className="flex items-center gap-2 bg-[#1A73E8] hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                className="flex items-center gap-2 bg-saffron hover:bg-saffron-dark text-white px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-saffron/50"
                 aria-label={currentQuestionIndex < questions.length - 1 ? "Next Question" : "See Results"}
               >
                 {currentQuestionIndex < questions.length - 1 ? "Next Question" : "See Results"}
@@ -429,13 +430,15 @@ const Quiz = () => {
   };
 
   return (
-    <section className="py-20 px-6 sm:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-900">
+    <section className="py-20 px-6 sm:px-8 max-w-7xl mx-auto" style={{ background: '#FAFAF8' }}>
       <div className="text-center mb-12">
-        <span className="inline-block py-1 px-3 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#1A73E8] dark:text-blue-400 text-sm font-bold tracking-widest uppercase mb-4">
-          Module 5
-        </span>
-        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-gray-900 dark:text-white">
-          Test Your <span className="text-[#1A73E8]">Knowledge</span>
+        <div className="module-badge">
+          <span className="module-badge-line" />
+          <span className="module-badge-text">Module 5</span>
+          <span className="module-badge-line" />
+        </div>
+        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-text-primary dark:text-text-primary-dark">
+          Test Your <span className="text-gradient">Knowledge</span>
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-medium">
           How well do you know the Indian election process? Find out now!

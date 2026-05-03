@@ -72,20 +72,18 @@ export default function Glossary() {
   };
 
   return (
-    <section className="py-16 bg-white dark:bg-surface-dark transition-colors duration-300 border-t border-gray-100 dark:border-gray-800">
+    <section className="py-16 overflow-hidden transition-colors duration-300 border-t border-border-light dark:border-border-dark" style={{ background: '#FAFAF8' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center space-x-2 mb-4">
-            <span className="h-px w-8 bg-eci-blue dark:bg-eci-blue-light"></span>
-            <span className="text-eci-blue dark:text-eci-blue-light font-bold text-sm tracking-widest uppercase">
-              MODULE 4
-            </span>
-            <span className="h-px w-8 bg-eci-blue dark:bg-eci-blue-light"></span>
+          <div className="module-badge">
+            <span className="module-badge-line" />
+            <span className="module-badge-text">MODULE 4</span>
+            <span className="module-badge-line" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
-            <span className="text-eci-blue">Election</span> Glossary
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary dark:text-text-primary-dark mb-4">
+            <span className="text-gradient">Election</span> Glossary
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Every election term explained in plain, simple English
@@ -102,7 +100,7 @@ export default function Glossary() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               aria-label="Search glossary terms"
-              className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-eci-blue dark:text-white transition-all"
+              className="w-full pl-10 pr-4 py-3 bg-white dark:bg-gray-800 border border-border-light dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-saffron dark:text-text-primary-dark transition-all"
             />
           </div>
 
@@ -113,7 +111,7 @@ export default function Glossary() {
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
-                  className={`px-3 py-1.5 text-sm rounded-md transition-colors ${language === lang.code ? 'bg-eci-blue text-white shadow-sm' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'}`}
+                  className={`px-3 py-1.5 text-sm rounded-md transition-colors ${language === lang.code ? 'bg-saffron text-white shadow-sm' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'}`}
                 >
                   {lang.name}
                 </button>
@@ -132,7 +130,7 @@ export default function Glossary() {
           <button 
             onClick={() => setActiveLetter(null)}
             aria-label="Show all terms"
-            className={`w-8 h-8 rounded-md text-sm font-medium transition-all ${!activeLetter ? 'bg-eci-blue text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent'}`}
+            className={`w-8 h-8 rounded-md text-sm font-medium transition-all ${!activeLetter ? 'bg-saffron text-white shadow-md' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-saffron/10 hover:text-saffron border border-transparent'}`}
           >
             All
           </button>
@@ -146,9 +144,9 @@ export default function Glossary() {
                 aria-label={`Filter by letter ${letter}`}
                 className={`w-8 h-8 rounded-md text-sm font-medium transition-all ${
                   activeLetter === letter 
-                    ? 'bg-eci-blue text-white shadow-md' 
+                    ? 'bg-saffron text-white shadow-md' 
                     : hasTerms 
-                      ? 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer border border-transparent hover:border-gray-300 dark:hover:border-gray-600' 
+                      ? 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-saffron/10 hover:text-saffron cursor-pointer border border-transparent' 
                       : 'bg-gray-50 dark:bg-gray-900/50 text-gray-300 dark:text-gray-600 cursor-not-allowed border border-dashed border-gray-200 dark:border-gray-800'
                 }`}
               >
@@ -169,10 +167,10 @@ export default function Glossary() {
             {filteredTerms.map((item, idx) => (
               <div 
                 key={idx} 
-                className="bg-white dark:bg-card-dark rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:border-eci-blue/30 dark:hover:border-eci-blue/50 hover:shadow-md transition-all group"
+                className="bg-white dark:bg-card-dark rounded-2xl p-6 shadow-sm border border-border-light dark:border-gray-800 hover:border-saffron dark:hover:border-saffron/60 hover:shadow-md transition-all group"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-bold text-eci-blue dark:text-eci-blue-light group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-lg font-bold text-saffron dark:text-saffron group-hover:text-saffron-dark transition-colors">
                     {highlightText(item.term, searchTerm)}
                   </h3>
                 </div>

@@ -15,10 +15,9 @@ const CARDS = [
     title: 'Understand the\nElection Process',
     description: 'From voter registration to result declaration — learn how India\'s election system works, step by step.',
     badge: 'Learn',
-    badgeColor: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
-    gradient: 'from-blue-500/10 via-eci-blue/5 to-transparent',
-    iconBg: 'bg-eci-blue',
-    hoverBorder: 'hover:border-eci-blue/50',
+    badgeColor: 'bg-saffron-light text-saffron border border-saffron/30',
+    topBorder: 'border-t-saffron',
+    iconBg: 'bg-saffron',
     delay: 'animate-delay-100',
   },
   {
@@ -28,10 +27,9 @@ const CARDS = [
     title: 'How Do\nI Vote?',
     description: 'First-time voter? Find your booth, check your name on the electoral roll, and know what to bring on polling day.',
     badge: 'Guide',
-    badgeColor: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
-    gradient: 'from-emerald-500/10 via-green-500/5 to-transparent',
-    iconBg: 'bg-emerald-500',
-    hoverBorder: 'hover:border-emerald-400/50',
+    badgeColor: 'bg-green-50 text-india-green border border-india-green/30',
+    topBorder: 'border-t-india-green',
+    iconBg: 'bg-india-green',
     delay: 'animate-delay-200',
   },
   {
@@ -41,10 +39,9 @@ const CARDS = [
     title: 'Ask a\nQuestion',
     description: 'Have a question about voting rights, candidates, or procedures? Get clear, unbiased answers instantly.',
     badge: 'AI Chat',
-    badgeColor: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
-    gradient: 'from-violet-500/10 via-purple-500/5 to-transparent',
-    iconBg: 'bg-violet-500',
-    hoverBorder: 'hover:border-violet-400/50',
+    badgeColor: 'bg-blue-50 text-eci-blue border border-eci-blue/30',
+    topBorder: 'border-t-eci-blue',
+    iconBg: 'bg-eci-blue',
     delay: 'animate-delay-300',
   },
 ]
@@ -56,7 +53,8 @@ function EntryCard({ card, onClick }) {
   return (
     <div
       id={card.id}
-      className={`entry-card p-6 sm:p-8 animate-slide-up ${card.delay}`}
+      className={`entry-card p-6 sm:p-8 animate-slide-up ${card.delay} border-t-[3px]`}
+      style={{ borderTopColor: card.id === 'card-election-process' ? '#FF9933' : card.id === 'card-how-to-vote' ? '#138808' : '#1A73E8' }}
       role="button"
       tabIndex={0}
       aria-label={card.title.replace('\n', ' ')}
@@ -68,18 +66,15 @@ function EntryCard({ card, onClick }) {
         }
       }}
     >
-      {/* Gradient overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-60 rounded-2xl pointer-events-none`} />
-
       {/* Accent icon top right */}
-      <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-        <AccentIcon className="w-16 h-16 text-gray-500 dark:text-gray-400" strokeWidth={1} />
+      <div className="absolute top-4 right-4 opacity-10 transition-opacity duration-300">
+        <AccentIcon className="w-16 h-16 text-saffron" strokeWidth={1} />
       </div>
 
       <div className="relative z-10 flex flex-col h-full gap-5">
         {/* Badge + Icon */}
         <div className="flex items-start justify-between">
-          <div className={`w-14 h-14 rounded-2xl ${card.iconBg} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+          <div className={`w-14 h-14 rounded-2xl ${card.iconBg} flex items-center justify-center shadow-lg transition-transform duration-300`}>
             <Icon className="w-7 h-7 text-white" strokeWidth={1.75} />
           </div>
           <span className={`text-xs font-semibold px-3 py-1 rounded-full ${card.badgeColor}`}>
@@ -88,7 +83,7 @@ function EntryCard({ card, onClick }) {
         </div>
 
         {/* Title */}
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight whitespace-pre-line">
+        <h2 className="text-xl sm:text-2xl font-bold text-text-primary dark:text-text-primary-dark leading-tight whitespace-pre-line">
           {card.title}
         </h2>
 
@@ -98,7 +93,7 @@ function EntryCard({ card, onClick }) {
         </p>
 
         {/* CTA Arrow */}
-        <div className="flex items-center gap-2 text-eci-blue dark:text-eci-blue-light font-semibold text-sm group-hover:gap-3 transition-all duration-200">
+        <div className="flex items-center gap-2 text-saffron font-semibold text-sm group-hover:gap-3 transition-all duration-200">
           <span>Explore</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
         </div>
@@ -113,35 +108,34 @@ export default function Hero({ language, onOpenChat }) {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-16 lg:py-24 overflow-hidden bg-hero-gradient-light dark:bg-hero-gradient-dark"
+      className="relative max-h-[70vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-10 lg:py-14 overflow-hidden bg-hero-gradient-light dark:bg-hero-gradient-dark"
       aria-label="Hero section"
     >
       {/* Background decorative blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-eci-blue/8 dark:bg-eci-blue/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-300/10 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-emerald-300/8 dark:bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-saffron/6 dark:bg-saffron/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-saffron/4 dark:bg-saffron/3 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col items-center gap-12 lg:gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col items-center gap-8 lg:gap-10">
 
         {/* Hero Text */}
         <div className="text-center max-w-3xl animate-fade-in">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-eci-blue/10 dark:bg-eci-blue/15 border border-eci-blue/20 dark:border-eci-blue/30 mb-6">
-            <Sparkles className="w-3.5 h-3.5 text-eci-blue dark:text-eci-blue-light" />
-            <span className="text-xs sm:text-sm font-semibold text-eci-blue dark:text-eci-blue-light tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-saffron/10 dark:bg-saffron/15 border border-saffron/20 dark:border-saffron/30 mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-saffron" />
+            <span className="text-xs sm:text-sm font-semibold text-saffron tracking-wide uppercase">
               Civic Education Platform
             </span>
           </div>
 
           {/* Main tagline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-3">
             <span className="text-gradient">{tagline.main}</span>
             <br />
-            <span className="text-gray-900 dark:text-white">{tagline.sub}</span>
+            <span style={{ color: '#1A0F00' }} className="dark:text-text-primary-dark">{tagline.sub}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-lg lg:text-xl text-text-secondary dark:text-text-secondary-dark leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-text-secondary dark:text-text-secondary-dark leading-relaxed max-w-2xl mx-auto">
             {tagline.desc}
           </p>
         </div>
@@ -174,7 +168,7 @@ export default function Hero({ language, onOpenChat }) {
             { icon: BookOpen, label: 'Verified Information' },
           ].map(({ icon: Icon, label }) => (
             <div key={label} className="flex items-center gap-2 text-text-secondary dark:text-text-secondary-dark text-sm">
-              <Icon className="w-4 h-4 text-eci-blue/60 dark:text-eci-blue-light/60" strokeWidth={1.75} />
+              <Icon className="w-4 h-4 text-saffron/70 dark:text-saffron/60" strokeWidth={1.75} />
               <span className="font-medium">{label}</span>
             </div>
           ))}

@@ -37,6 +37,12 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-surface-light dark:bg-surface-dark transition-colors duration-300">
+      {/* Tricolor bar */}
+      <div className="tricolor-bar" aria-hidden="true">
+        <div className="tricolor-bar-saffron" />
+        <div className="tricolor-bar-white" />
+        <div className="tricolor-bar-green" />
+      </div>
       <Navbar
         isDark={isDark}
         toggleDark={() => setIsDark(!isDark)}

@@ -326,7 +326,7 @@ function TimelineStrip({ activeIdx }) {
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{
-            background: 'linear-gradient(90deg, #1A73E8, #4a9af5)',
+            background: 'linear-gradient(90deg, #FF9933, #E6872A)',
             width: activeIdx < 0 ? '0%' : `${((activeIdx + 0.5) / STAGES.length) * 100}%`,
           }}
         />
@@ -351,25 +351,25 @@ export default function ElectionTimeline() {
     <section
       id="election-timeline"
       aria-labelledby="timeline-heading"
-      className="relative px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-surface-light dark:bg-surface-dark overflow-hidden"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 lg:py-24 overflow-hidden"
+      style={{ background: '#FAFAF8' }}
     >
       {/* Background blobs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-eci-blue/5 dark:bg-eci-blue/3 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-300/8 dark:bg-blue-500/3 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-saffron/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-saffron/3 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
 
         {/* Section header */}
         <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-eci-blue/10 dark:bg-eci-blue/15 border border-eci-blue/20 dark:border-eci-blue/30 mb-5">
-            <BarChart3 className="w-3.5 h-3.5 text-eci-blue dark:text-eci-blue-light" />
-            <span className="text-xs sm:text-sm font-semibold text-eci-blue dark:text-eci-blue-light tracking-wide uppercase">
-              Module 1
-            </span>
+          <div className="module-badge">
+            <span className="module-badge-line" />
+            <span className="module-badge-text">Module 1</span>
+            <span className="module-badge-line" />
           </div>
           <h2
             id="timeline-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-gray-900 dark:text-white"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-text-primary dark:text-text-primary-dark"
           >
             Election{' '}
             <span className="text-gradient">Timeline</span>{' '}

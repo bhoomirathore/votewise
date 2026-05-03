@@ -1,4 +1,4 @@
-import { Sun, Moon, Globe, Vote, ChevronDown } from 'lucide-react'
+import { Sun, Moon, Vote } from 'lucide-react'
 
 const LANGUAGES = ['English', 'हिन्दी', 'தமிழ்', 'বাংলা']
 
@@ -11,7 +11,7 @@ const LANG_LABELS = {
 
 export default function Navbar({ isDark, toggleDark, language, setLanguage }) {
   return (
-    <header className="sticky top-0 z-40 w-full navbar-glass">
+    <header className="sticky top-[4px] z-40 w-full navbar-glass">
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
         role="navigation"
@@ -23,12 +23,13 @@ export default function Navbar({ isDark, toggleDark, language, setLanguage }) {
           className="flex items-center gap-2.5 group"
           aria-label="VoteWise Home"
         >
-          <div className="w-9 h-9 rounded-xl bg-eci-blue flex items-center justify-center shadow-eci group-hover:scale-110 transition-transform duration-200">
+          <div className="w-9 h-9 rounded-xl bg-saffron flex items-center justify-center shadow-saffron group-hover:scale-110 transition-transform duration-200">
             <Vote className="w-5 h-5 text-white" strokeWidth={2.5} />
           </div>
           <div className="flex flex-col leading-none">
-            <span className="font-bold text-lg text-gray-900 dark:text-white tracking-tight">
-              Vote<span className="text-eci-blue">Wise</span>
+            <span className="font-bold text-lg tracking-tight" style={{ color: '#1A0F00' }}>
+              <span className="text-saffron">Vote</span>
+              <span className="dark:text-text-primary-dark">Wise</span>
             </span>
             <span className="text-[10px] font-medium text-text-secondary dark:text-text-secondary-dark uppercase tracking-widest hidden sm:block">
               Know Your Vote
@@ -64,9 +65,9 @@ export default function Navbar({ isDark, toggleDark, language, setLanguage }) {
             title={isDark ? 'Light mode' : 'Dark mode'}
           >
             {isDark ? (
-              <Sun className="w-4.5 h-4.5" strokeWidth={2} />
+              <Sun className="w-4 h-4" strokeWidth={2} />
             ) : (
-              <Moon className="w-4.5 h-4.5" strokeWidth={2} />
+              <Moon className="w-4 h-4" strokeWidth={2} />
             )}
           </button>
         </div>

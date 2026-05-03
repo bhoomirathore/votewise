@@ -1,9 +1,9 @@
-import { Vote, Heart, Github } from 'lucide-react'
+import { Vote, Heart } from 'lucide-react'
 
 export default function Footer() {
   return (
     <footer
-      className="w-full border-t border-border-light dark:border-border-dark bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm"
+      className="w-full bg-white dark:bg-card-dark border-t-4 border-saffron"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -12,11 +12,12 @@ export default function Footer() {
 
           {/* Brand mark */}
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-eci-blue/90 flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-saffron flex items-center justify-center">
               <Vote className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
             </div>
-            <span className="font-bold text-sm text-gray-700 dark:text-gray-300">
-              Vote<span className="text-eci-blue">Wise</span>
+            <span className="font-bold text-sm" style={{ color: '#1A0F00' }}>
+              <span className="text-saffron">Vote</span>
+              <span className="dark:text-text-primary-dark">Wise</span>
             </span>
           </div>
 

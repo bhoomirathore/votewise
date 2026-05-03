@@ -123,7 +123,7 @@ export default function GeminiChat({ isOpen, onClose }) {
         aria-label="VoteWise AI Chat"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-eci-blue text-white flex-shrink-0">
+        <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" style={{ background: '#FF9933' }}>
            <div className="flex items-center gap-3">
               <div className="p-1.5 bg-white/20 rounded-lg">
                  <Bot className="w-5 h-5" />
@@ -152,7 +152,8 @@ export default function GeminiChat({ isOpen, onClose }) {
 
              return (
                <div key={idx} className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
-                  <div className={`max-w-[85%] px-4 py-3 rounded-2xl ${isUser ? 'bg-eci-blue text-white rounded-br-sm shadow-md shadow-blue-500/20' : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm border border-gray-100 dark:border-gray-700 rounded-bl-sm'}`}>
+                  <div className={`max-w-[85%] px-4 py-3 rounded-2xl ${isUser ? 'text-white rounded-br-sm shadow-md' : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm border border-gray-100 dark:border-gray-700 rounded-bl-sm'}`}
+                       style={isUser ? { background: '#FF9933' } : {}}>
                      <p className="text-[13px] md:text-sm whitespace-pre-wrap leading-relaxed">{mainText}</p>
                   </div>
                   <span className="text-[10px] text-gray-400 mt-1.5 px-1 font-medium">

@@ -8,6 +8,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        saffron: '#FF9933',
+        'saffron-dark': '#E6872A',
+        'saffron-light': '#FFF3E0',
+        'saffron-pale': '#FAFAF8',
+        'india-green': '#138808',
         eci: {
           blue: '#1A73E8',
           'blue-dark': '#1557b0',
@@ -15,22 +20,22 @@ export default {
           'blue-glow': 'rgba(26,115,232,0.25)',
         },
         surface: {
-          light: '#F8FAFF',
-          dark: '#0F1117',
+          light: '#FAFAF8',
+          dark: '#1A1208',
         },
         card: {
           light: '#FFFFFF',
-          dark: '#1C2030',
+          dark: '#2D1F0A',
         },
         border: {
-          light: '#E2E8F4',
-          dark: '#2A3148',
+          light: '#E8DDD0',
+          dark: '#3D2E18',
         },
         text: {
-          primary: '#1E2A3B',
-          secondary: '#5A6478',
-          'primary-dark': '#EDF2FF',
-          'secondary-dark': '#8B9ABF',
+          primary: '#1A0F00',
+          secondary: '#6B5744',
+          'primary-dark': '#F5EDE0',
+          'secondary-dark': '#B8956A',
         }
       },
       fontFamily: {
@@ -48,8 +53,8 @@ export default {
           '50%': { transform: 'translateY(-6px)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(26,115,232,0.4)' },
-          '50%': { boxShadow: '0 0 0 12px rgba(26,115,232,0)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(255,153,51,0.4)' },
+          '50%': { boxShadow: '0 0 0 12px rgba(255,153,51,0)' },
         },
         slideUp: {
           from: { opacity: '0', transform: 'translateY(24px)' },
@@ -61,10 +66,9 @@ export default {
         },
       },
       backgroundImage: {
-        'hero-gradient-light': 'linear-gradient(135deg, #EEF4FF 0%, #F8FAFF 40%, #E8F0FF 100%)',
-        'hero-gradient-dark': 'linear-gradient(135deg, #0A0E1A 0%, #0F1117 40%, #111827 100%)',
-        'card-gradient': 'linear-gradient(145deg, rgba(26,115,232,0.08) 0%, rgba(26,115,232,0.02) 100%)',
-        'card-gradient-dark': 'linear-gradient(145deg, rgba(26,115,232,0.15) 0%, rgba(26,115,232,0.05) 100%)',
+        'hero-gradient-light': 'linear-gradient(135deg, #FFF8F0 0%, #FAFAF8 40%, #FFF3E0 100%)',
+        'hero-gradient-dark': 'linear-gradient(135deg, #1A1208 0%, #2D1F0A 40%, #1A1208 100%)',
+        'card-gradient': 'linear-gradient(145deg, rgba(255,153,51,0.06) 0%, rgba(255,153,51,0.01) 100%)',
       },
     },
   },

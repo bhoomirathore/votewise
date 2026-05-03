@@ -70,15 +70,16 @@ export default function MenuBar({ onOpenChat }) {
         style={{
           width: '100%',
           height: '44px',
-          background: '#1a1a2e',
-          borderBottom: '2px solid #1A73E8',
+          background: '#FFFFFF',
+          borderBottom: '1px solid #E8DDD0',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'sticky',
-          top: 0,
+          top: '68px',
           zIndex: 40,
+          boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
         }}
-        className="hidden md:flex"
+        className="hidden md:flex dark:bg-card-dark dark:border-border-dark"
       >
         <ul style={{ display: 'flex', alignItems: 'center', gap: '4px', listStyle: 'none', margin: 0, padding: 0 }}>
           {MENU_ITEMS.map(({ label, icon: Icon, id }) => {
@@ -95,10 +96,10 @@ export default function MenuBar({ onOpenChat }) {
                     padding: '6px 16px',
                     fontSize: '13px',
                     fontWeight: isActive ? '600' : '400',
-                    color: isActive ? '#ffffff' : '#94A3B8',
+                    color: isActive ? '#FF9933' : '#6B5744',
                     background: 'none',
                     border: 'none',
-                    borderBottom: isActive ? '2px solid #1A73E8' : '2px solid transparent',
+                    borderBottom: isActive ? '2px solid #FF9933' : '2px solid transparent',
                     cursor: 'pointer',
                     transition: 'color 0.2s, border-color 0.2s',
                     height: '44px',
@@ -106,13 +107,13 @@ export default function MenuBar({ onOpenChat }) {
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = '#ffffff';
-                      e.currentTarget.style.borderBottomColor = '#1A73E8';
+                      e.currentTarget.style.color = '#FF9933';
+                      e.currentTarget.style.borderBottomColor = '#FF9933';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = '#94A3B8';
+                      e.currentTarget.style.color = '#6B5744';
                       e.currentTarget.style.borderBottomColor = 'transparent';
                     }
                   }}
