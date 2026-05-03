@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
+import MenuBar from './components/MenuBar'
 import Hero from './components/Hero'
 import ElectionTimeline from './components/ElectionTimeline'
 import VoterGuide from './components/VoterGuide'
@@ -42,6 +43,7 @@ function App() {
         language={language}
         setLanguage={setLanguage}
       />
+      <MenuBar onOpenChat={() => setIsChatOpen(true)} />
       <main className="flex-1">
         <Hero language={language} onOpenChat={() => setIsChatOpen(true)} />
         <div id="election-timeline">
@@ -50,8 +52,12 @@ function App() {
         <div id="voter-guide">
           <VoterGuide />
         </div>
-        <Glossary />
-        <Quiz />
+        <div id="glossary">
+          <Glossary />
+        </div>
+        <div id="quiz">
+          <Quiz />
+        </div>
       </main>
       <Footer />
       <div onClick={() => setIsChatOpen(!isChatOpen)}>
