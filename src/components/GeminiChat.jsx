@@ -68,11 +68,13 @@ export default function GeminiChat({ isOpen, onClose }) {
         }))
       ];
 
+      const apiKey = CONFIG.GROQ_API_KEY || import.meta.env.VITE_GROQ_API_KEY;
+
       const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${CONFIG.GROQ_API_KEY}`
+          'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model: 'llama-3.1-8b-instant',
