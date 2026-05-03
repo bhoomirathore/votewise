@@ -49,7 +49,7 @@ const CARDS = [
   },
 ]
 
-function EntryCard({ card }) {
+function EntryCard({ card, onClick }) {
   const Icon = card.icon
   const AccentIcon = card.accentIcon
 
@@ -60,6 +60,13 @@ function EntryCard({ card }) {
       role="button"
       tabIndex={0}
       aria-label={card.title.replace('\n', ' ')}
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
     >
       {/* Gradient overlay */}
       <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-60 rounded-2xl pointer-events-none`} />
@@ -100,7 +107,7 @@ function EntryCard({ card }) {
   )
 }
 
-export default function Hero({ language }) {
+export default function Hero({ language, onOpenChat }) {
   const tagline = TAGLINES[language] || TAGLINES['English']
 
   return (
@@ -145,9 +152,18 @@ export default function Hero({ language }) {
           role="list"
           aria-label="Main navigation cards"
         >
-          {CARDS.map((card) => (
-            <EntryCard key={card.id} card={card} />
-          ))}
+          {CARDS.map((card) => {
+            let onClickHandler = undefined;
+            if (card.id === 'card-election-process') {
+              onClickHandler = () => document.getElementById('election-timeline')?.scrollIntoView({ behavior: 'smooth' });
+            } else if (card.id === 'card-how-to-vote') {
+              onClickHandler = () => document.getElementById('voter-guide')?.scrollIntoView({ behavior: 'smooth' });
+            } else if (card.id === 'card-ask-question') {
+              onClickHandler = onOpenChat;
+            }
+
+            return <EntryCard key={card.id} card={card} onClick={onClickHandler} />;
+          })}
         </div>
 
         {/* Trust badges */}

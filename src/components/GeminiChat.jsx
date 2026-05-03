@@ -60,26 +60,34 @@ export default function GeminiChat({ isOpen, onClose }) {
     setIsLoading(true);
 
     try {
-      const payload = {
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents: newMessages.map(msg => ({
-          role: msg.role === 'user' ? 'user' : 'model',
-          parts: [{ text: msg.content }]
+      const conversationHistory = [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...newMessages.map(msg => ({
+          role: msg.role === 'user' ? 'user' : 'assistant',
+          content: msg.content
         }))
-      };
+      ];
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${CONFIG.GEMINI_API_KEY}`, {
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${CONFIG.GROQ_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-8b-instant',
+          messages: conversationHistory,
+          max_tokens: 500,
+          temperature: 0.7
+        })
       });
 
       if (!response.ok) throw new Error("API Error");
 
       const data = await response.json();
-      const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process that.";
-      
-      setMessages([...newMessages, { role: 'model', content: botText, timestamp: new Date().toISOString() }]);
+      const aiMessage = data.choices[0].message.content;
+
+      setMessages([...newMessages, { role: 'model', content: aiMessage, timestamp: new Date().toISOString() }]);
     } catch (err) {
       console.error(err);
       setMessages([...newMessages, { role: 'model', content: "Sorry, I could not connect right now. Please try again.", timestamp: new Date().toISOString() }]);

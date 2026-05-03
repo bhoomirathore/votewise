@@ -43,9 +43,13 @@ function App() {
         setLanguage={setLanguage}
       />
       <main className="flex-1">
-        <Hero language={language} />
-        <ElectionTimeline />
-        <VoterGuide />
+        <Hero language={language} onOpenChat={() => setIsChatOpen(true)} />
+        <div id="election-timeline">
+          <ElectionTimeline />
+        </div>
+        <div id="voter-guide">
+          <VoterGuide />
+        </div>
         <Glossary />
         <Quiz />
       </main>
