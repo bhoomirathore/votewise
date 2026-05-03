@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Bot, X, Send, Trash2 } from 'lucide-react';
-import CONFIG from '../../config.js';
 
 const SYSTEM_PROMPT = "You are VoteWise, a civic education assistant specializing in Indian elections. Answer only questions about election processes, voting rights, electoral systems, and democratic institutions. Be factual, neutral, and concise — maximum 150 words per answer. Never endorse any political party or candidate. If asked about unrelated topics, politely redirect. After your main answer always add: SUGGESTIONS: followed by exactly 2 short follow-up questions separated by a pipe character. Example: SUGGESTIONS: What is Form 6? | How do I check my voter ID status?";
 
@@ -68,7 +67,7 @@ export default function GeminiChat({ isOpen, onClose }) {
         }))
       ];
 
-      const apiKey = CONFIG.GROQ_API_KEY || import.meta.env.VITE_GROQ_API_KEY;
+      const apiKey = import.meta.env.VITE_GROQ_API_KEY;
 
       const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
