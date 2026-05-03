@@ -52,7 +52,10 @@ export default function GeminiChat({ isOpen, onClose }) {
   const handleSend = async (text) => {
     if (!text.trim() || isLoading) return;
 
-    const userMessage = { role: 'user', content: text, timestamp: new Date().toISOString() };
+    const sanitizedInput = text.trim().slice(0, 500);
+    if (!sanitizedInput) return;
+
+    const userMessage = { role: 'user', content: sanitizedInput, timestamp: new Date().toISOString() };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
